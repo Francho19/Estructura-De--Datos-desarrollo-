@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Catálogo</title>
+  <!-- Estilos -->
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<!-- Contenedores para header, catálogo y footer -->
+<div id="header"></div>
+
+<div class="catalogo" id="catalog"></div>
+
+<div id="footer"></div>
+
+<!-- Cargar header y footer dinámicamente -->
+<script>
+  async function cargarComponente(id, url) {
+    const resp = await fetch(url);
+    const html = await resp.text();
+    document.getElementById(id).innerHTML = html;
+  }
+
+  cargarComponente('header', 'components/header/header.html');
+  cargarComponente('footer', 'components/footer/footer.html');
+</script>
+
+<!-- 1️⃣ Primero cargar el Web Component -->
+<script src="products/producto-componente.js"></script>
+
+<!-- 2️⃣ Luego main.js que crea las tarjetas -->
+<script src="js/main.js"></script>
+
+</body>
+</html>
